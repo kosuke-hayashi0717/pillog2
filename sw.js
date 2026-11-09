@@ -1,4 +1,4 @@
-const CACHE='pillog-cache-v172';
+const CACHE='pillog-cache-v173';
 const ASSETS=['./','./index.html','./manifest.webmanifest','./icon.png','./icon-512.png','./cat-sticker.png','./ferret-sticker.png'];
 self.addEventListener('install',e=>{e.waitUntil(caches.open(CACHE).then(c=>c.addAll(ASSETS)));self.skipWaiting()});
 self.addEventListener('activate',e=>{e.waitUntil(Promise.all([caches.keys().then(keys=>Promise.all(keys.filter(k=>k.startsWith('pillog-cache-')&&k!==CACHE).map(k=>caches.delete(k)))),self.clients.claim()]))});
